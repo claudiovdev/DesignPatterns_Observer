@@ -6,8 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="financeiro-sem-observer" />
+        <module name="financeiro-sem-observer (1)" />
+        <module name="financeiro-sem-observer (2)" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="financeiro-sem-observer" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -9,8 +9,8 @@ import org.quartz.JobExecutionException;
 
 import com.algaworks.model.Lancamento;
 import com.algaworks.repository.Lancamentos;
-import com.algaworks.senders.EnviadorEmail;
-import com.algaworks.senders.EnviadorSMS;
+import com.algaworks.listeners.EnviadorEmail;
+import com.algaworks.listeners.EnviadorSMS;
 
 public class LancamentosVencidosJob implements Job {
 

@@ -12,14 +12,14 @@ import org.quartz.impl.StdSchedulerFactory;
 
 import com.algaworks.job.LancamentosVencidosJob;
 import com.algaworks.repository.Lancamentos;
-import com.algaworks.senders.EnviadorEmail;
-import com.algaworks.senders.EnviadorSMS;
+import com.algaworks.listeners.EmailListener;
+import com.algaworks.listeners.SMSListener;
 
 public class Principal {
 
 	public static void main(String[] args) throws Exception {
-		EnviadorEmail enviadorEmail = new EnviadorEmail();
-		EnviadorSMS enviadorSms = new EnviadorSMS();
+		EmailListener enviadorEmail = new EmailListener();
+		SMSListener enviadorSms = new SMSListener();
 		Lancamentos lancamentos = new Lancamentos();
 		
 		JobDataMap jobDataMap = new JobDataMap();

@@ -5,6 +5,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/financeiro-sem-observer/pom.xml" />
+        <option value="$PROJECT_DIR$/financeiro-com-observer/pom.xml" />
       </list>
     </option>
   </component>

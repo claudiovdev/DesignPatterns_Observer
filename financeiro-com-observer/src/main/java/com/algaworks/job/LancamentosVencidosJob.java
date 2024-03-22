@@ -9,8 +9,8 @@ import org.quartz.JobExecutionException;
 
 import com.algaworks.model.Lancamento;
 import com.algaworks.repository.Lancamentos;
-import com.algaworks.senders.EnviadorEmail;
-import com.algaworks.senders.EnviadorSMS;
+import com.algaworks.listeners.EmailListener;
+import com.algaworks.listeners.SMSListener;
 
 public class LancamentosVencidosJob implements Job {
 
@@ -21,8 +21,8 @@ public class LancamentosVencidosJob implements Job {
 		Lancamentos lancamentos = (Lancamentos) jobDataMap.get("lancamentos");
 		List<Lancamento> lancamentosVencidos = lancamentos.todosVencidos();
 		
-		EnviadorEmail enviadorEmail = (EnviadorEmail) jobDataMap.get("enviadorEmail");
-		EnviadorSMS enviadorSms = (EnviadorSMS) jobDataMap.get("enviadorSms");
+		EmailListener enviadorEmail = (EmailListener) jobDataMap.get("enviadorEmail");
+		SMSListener enviadorSms = (SMSListener) jobDataMap.get("enviadorSms");
 		enviadorEmail.enviar(lancamentosVencidos);
 		enviadorSms.enviar(lancamentosVencidos);
 	}

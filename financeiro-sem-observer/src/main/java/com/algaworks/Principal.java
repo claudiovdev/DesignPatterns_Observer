@@ -12,8 +12,8 @@ import org.quartz.impl.StdSchedulerFactory;
 
 import com.algaworks.job.LancamentosVencidosJob;
 import com.algaworks.repository.Lancamentos;
-import com.algaworks.senders.EnviadorEmail;
-import com.algaworks.senders.EnviadorSMS;
+import com.algaworks.listeners.EnviadorEmail;
+import com.algaworks.listeners.EnviadorSMS;
 
 public class Principal {
 
