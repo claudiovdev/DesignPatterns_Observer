@@ -4,7 +4,7 @@ import com.algaworks.model.Lancamento;
 
 import java.util.List;
 
-public interface Listner {
+public interface Listener {
 
-    public void atualizar(List<Lancamento> lancamentosVencidos);
+    public void atualizar();
 }

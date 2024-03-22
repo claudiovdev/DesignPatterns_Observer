@@ -4,6 +4,9 @@ import static org.quartz.CronScheduleBuilder.cronSchedule;
 import static org.quartz.JobBuilder.newJob;
 import static org.quartz.TriggerBuilder.newTrigger;
 
+import com.algaworks.listeners.Listener;
+import com.algaworks.notificador.Notificador;
+import com.algaworks.notificador.NotificadorLancamentosVencidos;
 import org.quartz.CronTrigger;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
@@ -18,16 +21,19 @@ import com.algaworks.listeners.SMSListener;
 public class Principal {
 
 	public static void main(String[] args) throws Exception {
-		EmailListener enviadorEmail = new EmailListener();
-		SMSListener enviadorSms = new SMSListener();
+		Notificador notificador = new NotificadorLancamentosVencidos();
+
+		Listener enviadorEmail = new EmailListener(notificador);
+		Listener enviadorSms = new SMSListener(notificador);
+
 		Lancamentos lancamentos = new Lancamentos();
-		
+
 		JobDataMap jobDataMap = new JobDataMap();
+
 		Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 		
 		jobDataMap.put("lancamentos", lancamentos);
-		jobDataMap.put("enviadorEmail", enviadorEmail);
-		jobDataMap.put("enviadorSms", enviadorSms);
+		jobDataMap.put("notificador", notificador);
 		
 		JobDetail job = newJob(LancamentosVencidosJob.class)
 						.setJobData(jobDataMap)

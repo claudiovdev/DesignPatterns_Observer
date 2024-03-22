@@ -2,6 +2,7 @@ package com.algaworks.job;
 
 import java.util.List;
 
+import com.algaworks.notificador.Notificador;
 import org.quartz.Job;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
@@ -19,12 +20,10 @@ public class LancamentosVencidosJob implements Job {
 		JobDataMap jobDataMap = context.getJobDetail().getJobDataMap();
 		
 		Lancamentos lancamentos = (Lancamentos) jobDataMap.get("lancamentos");
+		Notificador notificador = (Notificador) jobDataMap.get("notificador");
+
 		List<Lancamento> lancamentosVencidos = lancamentos.todosVencidos();
-		
-		EmailListener enviadorEmail = (EmailListener) jobDataMap.get("enviadorEmail");
-		SMSListener enviadorSms = (SMSListener) jobDataMap.get("enviadorSms");
-		enviadorEmail.enviar(lancamentosVencidos);
-		enviadorSms.enviar(lancamentosVencidos);
+		notificador.novosLancamentosVencidos(lancamentosVencidos);
 	}
 
 }
